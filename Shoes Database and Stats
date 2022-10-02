@@ -1,0 +1,31 @@
+CREATE TABLE shoes (id INTEGER PRIMARY KEY, name text, size integer, brand text, price integer);
+INSERT into shoes VALUES
+(1,"Blazers", 10, "NIKE", 100),
+(2,"Dunks",10,"NIKE", 100),
+(3,"Air Force 1", 10, "NIKE", 110),
+(4,"997s", 10, "New Balance", 130),
+(5,"550", 10, "New Balance", 140),
+(6, "Oldschool",10, "Vans", 60),
+(7,"Oldschool low", 10, "vans",50),
+(8,"Pure money", 10, "Jordan",200),
+(9,"Chicago", 10, "Jordan", 200),
+(10,"waffle ones", 10, "NIKE", 100),
+(11,"Sacai waffle ones", 10, "NIKE", 100),
+(12,"Concord",10, "Jordan",200),
+(13,"Georgetowns", 10, "Jordan", 200),
+(14,"Ferrari", 10,"Jordan", 200),
+(15,"superstars",10, "Adiddas", 100);
+SELECT * FROM shoes ORDER BY price;
+
+--display the database ordered by price.
+SELECT* FROM shoes
+ORDER BY price asc;
+
+--what is the average price of nikes?
+SELECT AVG(price) "average price of nikes" 
+FROM shoes
+Where brand='NIKE';
+
+--How much is the cheapest pair of shoes?
+SELECT name, brand, MIN(price) "cheapest pair in store"
+FROM Shoes;
