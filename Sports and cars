@@ -1,0 +1,50 @@
+
+
+CREATE TABLE FAME (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    age INTEGER,
+    sport INTEGER);
+    
+INSERT INTO FAME (id, name, age , sport) VALUES ("1"," Canelo Alvarez", "32", "Boxing");
+INSERT INTO FAME (id, name, age, sport) VALUES ("2"," LaMelo Ball", "21", "Basketball");
+INSERT INTO FAME (id,name, age, sport) VALUES ("3"," Mike Tyson", "21", "Boxing");
+INSERT INTO FAME (id, name, age, sport) VALUES ("4", " Lebron James", "37", "Basketball");
+INSERT INTO FAME (id,name, age, sport) VALUES ("5"," Tyron Mathieu", "30", "Football");
+
+CREATE table cars (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Brand TEXT);
+    
+INSERT INTO cars (id, Brand) VALUES (78, "Ferrari");
+INSERT INTO cars (id, Brand) VALUES (23, "BMW");
+INSERT INTO cars (id, Brand) VALUES (19, "Lamborgini");
+INSERT INTO cars (id, Brand) VALUES (54, "Porsche");
+INSERT INTO cars (id, Brand) VALUES (89, "Aston martin");
+
+CREATE table owners (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    person_id INTEGER,
+    cars_id INTEGER);
+
+INSERT INTO owners (person_id,cars_id)
+    VALUES (1,78);
+INSERT INTO owners (person_id, cars_id)
+    VALUES (2, 23);
+INSERT INTO owners (person_id, cars_id)
+    VALUES (3, 89);
+INSERT INTO owners (person_id, cars_id)
+    VALUES (4, 54);
+INSERT INTO owners (person_id, cars_id)
+    VALUES (5, 19);
+    
+
+Which famous person drives which car? 
+SELECT 
+    name,
+    brand,
+    sport
+    FROM FAME
+    INNER JOIN owners ON FAME.id = owners.person_id 
+    INNER JOIN cars ON owners.cars_id = cars.id;
+   
