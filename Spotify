@@ -3,8 +3,11 @@ I then created a table to insert Spotify data into.
 Finally, I performed analytics on the data using SQL. 
 Then I inserted the Spotify Data .csv into the table.
 
-Finally, I explored the data to determine which artist in the dataset would 
+Next, I explored the data to determine which artist in the dataset would 
 be the best to play at a party based on their average danceability.
+
+Finally, I created a CTE to find average popularity for artists, then labeled those with average
+popularities above 90 as "Top Stars"
 
 
 Creating the table: 
@@ -37,3 +40,16 @@ GROUP BY  danceability
 ORDER BY  danceability DESC
 LIMIT 1;
 
+What is the average popularity for the artists? 
+WITH popularity_average_CTE AS (
+SELECT artist_name,
+AVG(popularity) AS average_popularity
+FROM SpotifyData 
+GROUP BY artist_name
+)
+ 
+SELECT  artist_name,
+        average_popularity,
+        'Top Star' AS tag
+FROM popularity_average_CTE
+WHERE average_popularity>=90;
